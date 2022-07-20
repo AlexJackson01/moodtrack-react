@@ -1,0 +1,44 @@
+body {
+  background-color: #8C52FF;
+  font-family: 'Roboto Slab', serif;
+
+}
+
+.container {
+  background-color: #FFFCEF;
+  margin: 50px 100px;
+  border-radius: 20px;
+  border: 2px solid #77838D;
+  box-shadow: 1px 1px 0px #C7D0D8,
+  2px 2px 0px #C7D0D8,
+  3px 3px 0px #C7D0D8,
+  4px 4px 0px #C7D0D8,
+  5px 5px 0px #C7D0D8,
+  6px 6px 0px #C7D0D8;
+}
+
+.logo-container {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.moodtrack-logo {
+  height: 300px;
+}
+
+.brain-icon {
+  height: 60px;
+}
+
+.spotify-logo {
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: -10px;
+}
+
+h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+}
