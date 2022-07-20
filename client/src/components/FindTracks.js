@@ -51,7 +51,7 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 25,
+            limit: 20,
             offset: getRandomOffset()
           }
         })
@@ -116,7 +116,7 @@ export default function FindTracks({ token, setToken }) {
             <p><button onClick={(e) => logout(e)}>Logout</button></p>
 
             <div className='container'>
-                {token && !showTrack ? (
+                {token && trackList !== undefined && !showTrack ? (
                     <div>
                         <h1>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
@@ -171,7 +171,7 @@ export default function FindTracks({ token, setToken }) {
             ) : (
                 <div className='song-container'>
                     <h1>MoodTrack of the day</h1>
-                    {songRecommendation[0].image !== undefined && <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />}
+                    {songRecommendation && <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />}
                     <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>
                     <Player token={token} uri={songRecommendation[0].uri} />
                     <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
