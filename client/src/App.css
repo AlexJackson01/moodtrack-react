@@ -82,17 +82,17 @@ h4 {
 } 
 
 .logout-button {
-  background-color: white;
-  color: #8C52FF;
+  background-color: #8C52FF;
+  color: white;
   font-family: 'Roboto Slab', serif;
-  font-size: 12px;
-  position: absolute;
-  right: 20%;
-  top: 10%;
+  font-size: 20px;
   text-align: center; 
-  padding: 10px;
-  width: 70px;
-  border-radius: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+  /* border-radius: 20px; */
   border: none;
-  margin-bottom: 50px;
+  margin-bottom: -300px;
+  /* margin-bottom: 50px; */
 }

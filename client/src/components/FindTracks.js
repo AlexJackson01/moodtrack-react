@@ -119,14 +119,15 @@ export default function FindTracks({ token, setToken }) {
     <div>
         <div className='logo-container'>
             <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
-            <button className='logout-button' onClick={(e) => logout(e)}>Logout</button>
+            <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
+
 
             <div className='container'>
                 {token && trackList.length >= 1 && !showTrack && (
                     <div>
                         <h1>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
-                            <Box sx={{ margin: '0 auto', width: '85%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Box sx={{ margin: '0 auto', width: '75%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <span className='emojis' role="img" aria-label="seat">💺</span>
                                 <Slider
                                     onChange={(e) => setDance(e.target.value / 10)}
@@ -141,7 +142,7 @@ export default function FindTracks({ token, setToken }) {
                                 <span className='emojis' role="img" aria-label="dancer">💃</span>
                             </Box>
     
-                            <Box sx={{ margin: '0 auto', width: '85%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Box sx={{ margin: '0 auto', width: '75%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <span className='emojis' role="img" aria-label="sleep">💤</span>
                                 <Slider
                                     onChange={(e) => setEnergy(e.target.value / 10)}
@@ -156,7 +157,7 @@ export default function FindTracks({ token, setToken }) {
                                 <span className='emojis' role="img" aria-label="sports">🏂</span>
                             </Box>
     
-                            <Box sx={{ margin: '0 auto', width: '85%', marginTop: '50px', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Box sx={{ margin: '0 auto', width: '75%', marginTop: '50px', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <span className='emojis' role="img" aria-label="happy">😄</span>
                                 <Slider
                                     onChange={(e) => setValence(e.target.value / 10)}
