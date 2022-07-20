@@ -14,6 +14,7 @@ export default function FindTracks({ token, setToken }) {
     const [energy, setEnergy] = useState("");
     const [valence, setValence] = useState("");
     const [songRecommendation, setSongRecommendation] = useState([]);
+    const [latestSongs, setLatestSongs] = useState([]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -50,7 +51,7 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 50,
+            limit: 25,
             offset: getRandomOffset()
           }
         })
@@ -85,19 +86,34 @@ export default function FindTracks({ token, setToken }) {
     
     }
 
-    // useEffect(() => {
-    //     findTracks();
-    // }, [token])
+    useEffect(() => {
+        findTracks();
+    }, [token])
 
     const findRecommendation = (e) => {
-  
+        e.preventDefault();
+    
+        const filtered = trackList.filter(function(track) {
+            return (track.danceability >= dance - 0.2 && track.danceability <= dance + 0.2)
+            && (track.energy >= energy - 0.2 && track.energy <= energy + 0.2)
+            && (track.valence >= valence - 0.2 && track.valence <= valence + 0.2)
+        })
+        
+        console.log(filtered);
+         
+        setSongRecommendation(filtered);
+        console.log(songRecommendation);
+        // setLatestSongs(state => ({
+        //     ...state, songRecommendation
+        // }))
+        setShowTrack(true);    
     }
 
   return (
     <div>
         <div className='logo-container'>
             <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
-            <button onClick={(e) => logout(e)}>Logout</button>
+            <p><button onClick={(e) => logout(e)}>Logout</button></p>
 
             <div className='container'>
                 {token && !showTrack ? (
@@ -155,10 +171,10 @@ export default function FindTracks({ token, setToken }) {
             ) : (
                 <div className='song-container'>
                     <h1>MoodTrack of the day</h1>
-                    <img src={songRecommendation.image} alt={`album cover of ${songRecommendation.track_name} by ${songRecommendation.artists}`} />
-                    <h2>{songRecommendation.track_name} by {songRecommendation.artists}</h2>
-                    <Player token={token} uri={songRecommendation.uri} />
-                    <h4>Listen on <p><a href={songRecommendation.external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
+                    {songRecommendation[0].image !== undefined && <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />}
+                    <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>
+                    <Player token={token} uri={songRecommendation[0].uri} />
+                    <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
                 </div>
             )}
             </div>

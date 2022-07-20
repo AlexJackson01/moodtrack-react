@@ -75,6 +75,8 @@ h4 {
 }
 
 .spotify-player {
-  padding-left: 300px;
-  padding-right: 300px;
+  margin: 0 auto;
+  width: 70%;
+  /* padding-left: 300px;
+  padding-right: 300px; */
 } 
