@@ -46,3 +46,30 @@ h1 {
 .moodtrack-logo-small {
   height: 150px;
 }
+
+.search-button {
+  background-color: #8C52FF;
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  text-align: center; 
+  line-height: 65px;
+  padding: 10px;
+  width: 300px;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 50px;
+}
+
+span.emojis {
+  font-size: 50px;
+  /* margin-right: 20px; */
+}
+
+h2 {
+  margin-bottom: 30px;
+}
+
+h4 {
+  margin-top: 50px;
+}
