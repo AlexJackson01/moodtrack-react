@@ -15,6 +15,7 @@ export default function FindTracks({ token, setToken }) {
     const [valence, setValence] = useState("");
     const [songRecommendation, setSongRecommendation] = useState([]);
     const [latestSongs, setLatestSongs] = useState([]);
+    // const [loading, setLoading] = useState(true);
 
     const logout = (e) => {
         e.preventDefault();
@@ -51,13 +52,14 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 25,
+            limit: 22,
             offset: getRandomOffset()
           }
         })
       
         const data = res.data.tracks.items;
-        console.log(data);  
+        console.log(data);
+
       
         for (let track of data) {
           tracks.push({
@@ -87,13 +89,17 @@ export default function FindTracks({ token, setToken }) {
         let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
         console.log(combined);
 
-        setTrackList(combined);
-        // console.log(trackList);
+        let sliced = combined.slice(0, 20);
+
+        setTrackList(sliced);
+        // setLoading(false);
+        console.log(trackList);
     
     }
 
     useEffect(() => {
         findTracks();
+        // setLoading(true);
     }, [])
 
     const findRecommendation = (e) => {
@@ -123,6 +129,7 @@ export default function FindTracks({ token, setToken }) {
 
 
             <div className='container'>
+                {/* {loading && trackList.length === 0 && <div><h1>Loading...</h1></div>} */}
                 {token && trackList.length >= 1 && !showTrack && (
                     <div>
                         <h1>How are you feeling today?</h1>

@@ -22,7 +22,8 @@ export default function LandingPage({ setToken }) {
         let urlParams = new URLSearchParams(window.location.hash.replace("#", "?"));
         let token = urlParams.get("access_token");
         window.localStorage.setItem("token", token);
-        setToken(token)
+        setToken(token);
+        
       }
 
 
