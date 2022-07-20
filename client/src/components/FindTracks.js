@@ -86,9 +86,9 @@ export default function FindTracks({ token, setToken }) {
     
     }
 
-    useEffect(() => {
-        findTracks();
-    }, [token])
+    // useEffect(() => {
+    //     findTracks();
+    // }, [token])
 
     const findRecommendation = (e) => {
         e.preventDefault();
@@ -113,7 +113,7 @@ export default function FindTracks({ token, setToken }) {
     <div>
         <div className='logo-container'>
             <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
-            <p><button onClick={(e) => logout(e)}>Logout</button></p>
+            <button className='logout-button' onClick={(e) => logout(e)}>Logout</button>
 
             <div className='container'>
                 {token && trackList !== undefined && !showTrack ? (
