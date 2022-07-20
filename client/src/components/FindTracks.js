@@ -51,12 +51,13 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 20,
+            limit: 25,
             offset: getRandomOffset()
           }
         })
       
-        const data = res.data.tracks.items;  
+        const data = res.data.tracks.items;
+        console.log(data);  
       
         for (let track of data) {
           tracks.push({
@@ -68,6 +69,8 @@ export default function FindTracks({ token, setToken }) {
             image: track.album.images[1].url
           })
         }
+
+        console.log(tracks);
     
         // call audio features for 50 random tracks
         for (let track of tracks) {
@@ -78,17 +81,20 @@ export default function FindTracks({ token, setToken }) {
           })
           features.push(res2.data);
         }
+
+        console.log(features);
       
         let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
+        console.log(combined);
 
         setTrackList(combined);
-        console.log(trackList);
+        // console.log(trackList);
     
     }
 
-    // useEffect(() => {
-    //     findTracks();
-    // }, [token])
+    useEffect(() => {
+        findTracks();
+    }, [])
 
     const findRecommendation = (e) => {
         e.preventDefault();
@@ -116,7 +122,7 @@ export default function FindTracks({ token, setToken }) {
             <button className='logout-button' onClick={(e) => logout(e)}>Logout</button>
 
             <div className='container'>
-                {token && trackList !== undefined && !showTrack ? (
+                {token && trackList.length >= 1 && !showTrack && (
                     <div>
                         <h1>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
@@ -168,14 +174,18 @@ export default function FindTracks({ token, setToken }) {
                             <button type='submit' className='search-button'>Get Today's MoodTrack</button>
                         </form>
                     </div>
-            ) : (
-                <div className='song-container'>
-                    <h1>MoodTrack of the day</h1>
-                    {songRecommendation && <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />}
-                    <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>
-                    <Player token={token} uri={songRecommendation[0].uri} />
-                    <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
-                </div>
+            )}
+
+            {token && trackList.length >= 1 && showTrack && (
+                             <div className='song-container'>
+                             <h1>MoodTrack of the day</h1>
+                                 <div>
+                                     <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />
+                                     <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>
+                                     <Player token={token} uri={songRecommendation[0].uri} />
+                                     <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
+                                 </div>
+                                 </div>
             )}
             </div>
         </div>
