@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import LandingPage from './components/LandingPage';
+import FindTracks from './components/FindTracks';
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <LandingPage setToken={setToken} />
+      {!token ? <LandingPage token={token} setToken={setToken} /> : <FindTracks token={token} setToken={setToken} />}
     </div>
   );
 }
