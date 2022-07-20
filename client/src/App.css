@@ -42,3 +42,7 @@ h1 {
   font-family: 'Roboto Slab', serif;
   font-weight: 300;
 }
+
+.moodtrack-logo-small {
+  height: 150px;
+}

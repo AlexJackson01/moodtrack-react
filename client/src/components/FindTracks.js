@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Logo from '../images/MoodTrack_logo.png';
 
-export default function FindTracks({ token }) {
+export default function FindTracks({ token, setToken }) {
 
     const [trackList, setTrackList] = useState([]);
+
+    const logout = (e) => {
+        e.preventDefault();
+        window.location.href = "/";
+
+        setToken("");
+        window.localStorage.removeItem("token");
+    }
 
     const getRandomSearch = () => {
         const characters = 'abcdefghijklmnopqrstuvwxyz';
@@ -67,11 +76,16 @@ export default function FindTracks({ token }) {
     
     }
 
-    useEffect(() => {
-        findTracks();
-    }, [token])
+    // useEffect(() => {
+    //     findTracks();
+    // }, [token])
 
   return (
-    <div>FindTracks</div>
+    <div>
+        <div className='logo-container'>
+            <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
+            <button onClick={(e) => logout(e)}>Logout</button>
+        </div>
+    </div>
   )
 }
