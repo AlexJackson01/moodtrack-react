@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Logo from '../images/MoodTrack_logo.png';
+import Spotify from '../images/Spotify_Logo.png';
+import Player from './Player';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
@@ -10,7 +12,8 @@ export default function FindTracks({ token, setToken }) {
     const [showTrack, setShowTrack] = useState(false);
     const [dance, setDance] = useState("");
     const [energy, setEnergy] = useState("");
-    const [valence, setValence] = useState(""); 
+    const [valence, setValence] = useState("");
+    const [songRecommendation, setSongRecommendation] = useState([]);
 
     const logout = (e) => {
         e.preventDefault();
@@ -149,7 +152,15 @@ export default function FindTracks({ token, setToken }) {
                             <button type='submit' className='search-button'>Get Today's MoodTrack</button>
                         </form>
                     </div>
-            ) : null}
+            ) : (
+                <div className='song-container'>
+                    <h1>MoodTrack of the day</h1>
+                    <img src={songRecommendation.image} alt={`album cover of ${songRecommendation.track_name} by ${songRecommendation.artists}`} />
+                    <h2>{songRecommendation.track_name} by {songRecommendation.artists}</h2>
+                    <Player token={token} uri={songRecommendation.uri} />
+                    <h4>Listen on <p><a href={songRecommendation.external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
+                </div>
+            )}
             </div>
         </div>
     </div>
