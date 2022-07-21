@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../images/MoodTrack_logo.png';
 import Brain from '../images/musicbrain.png';
 import Spotify from '../images/Spotify_Logo.png';
@@ -12,7 +13,7 @@ export default function LandingPage({ setToken }) {
       }, [])
 
     const CLIENT_ID = 'd6164693bccb4f4eab924abd717fdf37';
-    const REDIRECT_URI = 'http://localhost:3000';
+    const REDIRECT_URI = 'http://localhost:3000/tracks';
     const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize';
     const RESPONSE_TYPE = 'token';
     const SCOPES = "streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
@@ -23,6 +24,7 @@ export default function LandingPage({ setToken }) {
         window.localStorage.setItem("token", token);
         setToken(token);
       }
+
 
 
   return (

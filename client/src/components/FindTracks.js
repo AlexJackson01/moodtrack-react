@@ -101,7 +101,6 @@ export default function FindTracks({ token, setToken }) {
     }
 
     useEffect(() => {
-        // getToken();
         findTracks();
         // setLoading(true);
     }, [])

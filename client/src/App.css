@@ -1,7 +1,8 @@
 body {
   /* background: rgb(159,106,214); */
   background-image: linear-gradient(rgba(126,113,245,1), rgba(159,106,214,1));
-  background-size: 100vh;
+  background-size: 100%;
+  background-attachment: fixed;
   font-family: 'Roboto Slab', serif;
 
 }
