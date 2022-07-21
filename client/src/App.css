@@ -28,7 +28,6 @@ body {
 
 .moodtrack-logo {
   height: 300px;
-  margin-bottom: -100px;
 }
 
 .brain-icon {
@@ -54,6 +53,8 @@ h1 {
 
 .moodtrack-logo-small {
   height: 150px;
+  margin-bottom: -30px;
+
 }
 
 .search-button {
