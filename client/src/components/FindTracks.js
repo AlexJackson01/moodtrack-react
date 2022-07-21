@@ -15,10 +15,17 @@ export default function FindTracks({ token, setToken }) {
     const [energy, setEnergy] = useState("");
     const [valence, setValence] = useState("");
     const [songRecommendation, setSongRecommendation] = useState([]);
+    const [randomSong, setRandomSong] = useState(0);
     const [latestSongs, setLatestSongs] = useState([]);
     // const [loading, setLoading] = useState(true);
 
 
+    const getToken = () => {
+        let urlParams = new URLSearchParams(window.location.hash.replace("#", "?"));
+        let token = urlParams.get("access_token");
+        window.localStorage.setItem("token", token);
+        setToken(token);
+      }
 
     const logout = (e) => {
         e.preventDefault();
@@ -46,6 +53,7 @@ export default function FindTracks({ token, setToken }) {
     let features = [];
 
     const findTracks = async () => {
+        // window.location.reload();
 
         // generate 50 random tracks
         const res = await axios.get("https://api.spotify.com/v1/search", {
@@ -55,7 +63,7 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 20,
+            limit: 50,
             offset: getRandomOffset()
           }
         })
@@ -89,21 +97,22 @@ export default function FindTracks({ token, setToken }) {
 
         console.log(features);
       
-        // let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
-        // console.log(combined);
+        let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
+        console.log(combined);
 
-        // let sliced = combined.slice(0, 20);
+        setTrackList(combined);
 
-        // setTrackList(sliced);
-        // // setLoading(false);
-        // console.log(trackList);
     
     }
 
     useEffect(() => {
-        findTracks();
+        getToken();
+        if (token) {
+            findTracks();
+        }
         // setLoading(true);
-    }, [])
+    }, [token])    
+ 
 
 
     const findRecommendation = (e) => {
@@ -118,6 +127,10 @@ export default function FindTracks({ token, setToken }) {
         console.log(filtered);
          
         setSongRecommendation(filtered);
+
+        // const random = songRecommendation[Math.floor(Math.random() * filtered.length)]
+        // setRandomSong(random);
+
         console.log(songRecommendation);
         // setLatestSongs(state => ({
         //     ...state, songRecommendation
@@ -133,7 +146,7 @@ export default function FindTracks({ token, setToken }) {
                     <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
                     <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
                     <div className='container'>
-                    <div>
+                        <div>
                         <h1>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
                             <Box sx={{ margin: '0 auto', width: '75%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -183,7 +196,7 @@ export default function FindTracks({ token, setToken }) {
     
                             <button type='submit' className='search-button'>Get Today's MoodTrack</button>
                         </form>
-                    </div>
+                    </div>                    
                     </div>
                     </div>
             )}
@@ -195,7 +208,7 @@ export default function FindTracks({ token, setToken }) {
                              <div className='container'>
                              <h1>MoodTrack of the day</h1>
                                  <div>
-                                     <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />
+                                     <img className='album-image' src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />
                                      <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>
                                      <Player token={token} uri={songRecommendation[0].uri} />
                                      <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
