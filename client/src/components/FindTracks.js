@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Logo from '../images/MoodTrack_logo.png';
 import Spotify from '../images/Spotify_Logo.png';
+import Brain from '../images/musicbrain.png';
 import Player from './Player';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -16,6 +17,8 @@ export default function FindTracks({ token, setToken }) {
     const [songRecommendation, setSongRecommendation] = useState([]);
     const [latestSongs, setLatestSongs] = useState([]);
     // const [loading, setLoading] = useState(true);
+
+
 
     const logout = (e) => {
         e.preventDefault();
@@ -52,7 +55,7 @@ export default function FindTracks({ token, setToken }) {
           params: {
             type: "track",
             q: getRandomSearch(),
-            limit: 22,
+            limit: 20,
             offset: getRandomOffset()
           }
         })
@@ -86,21 +89,23 @@ export default function FindTracks({ token, setToken }) {
 
         console.log(features);
       
-        let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
-        console.log(combined);
+        // let combined = tracks.map((item, i) => Object.assign({}, item, features[i])); // the results from search 1 and 2 are joined together
+        // console.log(combined);
 
-        let sliced = combined.slice(0, 20);
+        // let sliced = combined.slice(0, 20);
 
-        setTrackList(sliced);
-        // setLoading(false);
-        console.log(trackList);
+        // setTrackList(sliced);
+        // // setLoading(false);
+        // console.log(trackList);
     
     }
 
     useEffect(() => {
+        // getToken();
         findTracks();
         // setLoading(true);
     }, [])
+
 
     const findRecommendation = (e) => {
         e.preventDefault();
@@ -123,14 +128,12 @@ export default function FindTracks({ token, setToken }) {
 
   return (
     <div>
-        <div className='logo-container'>
-            <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
-            <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
 
-
-            <div className='container'>
-                {/* {loading && trackList.length === 0 && <div><h1>Loading...</h1></div>} */}
-                {token && trackList.length >= 1 && !showTrack && (
+                {token && !showTrack && (
+                    <div className='logo-container'>
+                    <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
+                    <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
+                    <div className='container'>
                     <div>
                         <h1>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
@@ -182,10 +185,15 @@ export default function FindTracks({ token, setToken }) {
                             <button type='submit' className='search-button'>Get Today's MoodTrack</button>
                         </form>
                     </div>
+                    </div>
+                    </div>
             )}
 
-            {token && trackList.length >= 1 && showTrack && (
-                             <div className='song-container'>
+            {token && songRecommendation.length >= 1 && showTrack && (
+                <div className='logo-container'>
+                    <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
+                    <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
+                             <div className='container'>
                              <h1>MoodTrack of the day</h1>
                                  <div>
                                      <img src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />
@@ -194,9 +202,8 @@ export default function FindTracks({ token, setToken }) {
                                      <h4>Listen on <p><a href={songRecommendation[0].external}><img className='spotify-logo' src={Spotify} alt='spotify logo' /></a></p></h4>
                                  </div>
                                  </div>
+                                 </div>
             )}
             </div>
-        </div>
-    </div>
   )
 }

@@ -1,5 +1,7 @@
 body {
-  background-color: #8C52FF;
+  /* background: rgb(159,106,214); */
+  background-image: linear-gradient(rgba(126,113,245,1), rgba(159,106,214,1));
+  background-size: 100vh;
   font-family: 'Roboto Slab', serif;
 
 }
@@ -15,6 +17,7 @@ body {
   4px 4px 0px #C7D0D8,
   5px 5px 0px #C7D0D8,
   6px 6px 0px #C7D0D8;
+  margin-bottom: 80px;
 }
 
 .logo-container {

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import '../App.css';
 import Logo from '../images/MoodTrack_logo.png';
 import Brain from '../images/musicbrain.png';
 import Spotify from '../images/Spotify_Logo.png';
@@ -23,7 +22,6 @@ export default function LandingPage({ setToken }) {
         let token = urlParams.get("access_token");
         window.localStorage.setItem("token", token);
         setToken(token);
-        
       }
 
 
