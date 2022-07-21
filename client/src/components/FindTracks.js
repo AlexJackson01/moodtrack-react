@@ -147,7 +147,7 @@ export default function FindTracks({ token, setToken }) {
                     <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
                     <div className='container'>
                         <div>
-                        <h1>How are you feeling today?</h1>
+                        <h1 className='page-title'>How are you feeling today?</h1>
                         <form onSubmit={(e) => findRecommendation(e)}>
                             <Box sx={{ margin: '0 auto', width: '75%', marginTop: '50px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <span className='emojis' role="img" aria-label="seat">💺</span>
@@ -206,7 +206,7 @@ export default function FindTracks({ token, setToken }) {
                     <img className='moodtrack-logo-small' src={Logo} alt='moodtrack logo' />
                     <p><button className='logout-button' onClick={(e) => logout(e)}>Logout</button></p>
                              <div className='container'>
-                             <h1>MoodTrack of the day</h1>
+                             <h1 className='page-title'>MoodTrack of the day</h1>
                                  <div>
                                      <img className='album-image' src={songRecommendation[0].image} alt={`album cover of ${songRecommendation[0].track_name} by ${songRecommendation[0].artists}`} />
                                      <h2>{songRecommendation[0].track_name} by {songRecommendation[0].artists}</h2>

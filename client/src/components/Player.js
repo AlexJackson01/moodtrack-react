@@ -18,7 +18,7 @@ export default function Player({ token, uri }) {
                 bgColor: '#FFFCEF',
                 color: '#000',
                 loaderColor: '#8C52FF',
-                sliderColor: 'linear-gradient(45deg, rgba(126,113,245,1), rgba(159,106,214,1))',
+                sliderColor: '#8C52FF',
                 trackArtistColor: '#77838D',
                 trackNameColor: '#8C52FF'
             }}

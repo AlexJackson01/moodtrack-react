@@ -28,6 +28,7 @@ body {
 
 .moodtrack-logo {
   height: 300px;
+  margin-bottom: -100px;
 }
 
 .brain-icon {
@@ -47,6 +48,10 @@ h1 {
   font-weight: 300;
 }
 
+.page-title {
+  margin-top: 40px;
+}
+
 .moodtrack-logo-small {
   height: 150px;
 }
@@ -63,6 +68,7 @@ h1 {
   border-radius: 20px;
   border: none;
   margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 span.emojis {
