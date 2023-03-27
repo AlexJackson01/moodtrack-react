@@ -16,7 +16,7 @@ export default function FindTracks ({ token, setToken }) {
   const [songRecommendation, setSongRecommendation] = useState([])
   const [randomSong, setRandomSong] = useState(0)
   const [latestSongs, setLatestSongs] = useState([])
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(null)
 
   const getToken = () => {
     let urlParams = new URLSearchParams(window.location.hash.replace('#', '?'))
@@ -104,7 +104,6 @@ export default function FindTracks ({ token, setToken }) {
 
     setTrackList(combined)
     setTimeout(() => setLoading(false, { trackList: combined }), 0)
-
   }
 
   useEffect(() => {
@@ -117,6 +116,7 @@ export default function FindTracks ({ token, setToken }) {
 
   const findRecommendation = e => {
     e.preventDefault()
+    setLoading(false)
 
     const filtered = trackList.filter(function (track) {
       return (
@@ -141,12 +141,17 @@ export default function FindTracks ({ token, setToken }) {
     //     ...state, songRecommendation
     // }))
     setShowTrack(true)
-    setLoading(false)
   }
 
   return (
     <div>
-      {token && !showTrack && !loading ? (
+      {loading && (
+        <div className='logo-container'>
+          <span className='loader'></span>
+        </div>
+      )}
+
+      {token && !showTrack && !loading && (
         <div className='logo-container'>
           <img
             className='moodtrack-logo-small'
@@ -158,120 +163,122 @@ export default function FindTracks ({ token, setToken }) {
               Logout
             </button>
           </p>
-          {trackList.length > 1 && <div className='container'>
-            <div>
-              <h1 className='page-title'>How are you feeling today?</h1>
-              <form onSubmit={e => findRecommendation(e)}>
-                <Box
-                  sx={{
-                    margin: '0 auto',
-                    width: '75%',
-                    marginTop: '50px',
-                    marginBottom: '30px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <span className='emojis' role='img' aria-label='sofa and lamp'>
-                    🛋️
-                  </span>
-                  <Slider
-                    onChange={e => setDance(e.target.value / 10)}
-                    aria-label='Temperature'
-                    defaultValue={0}
-                    step={1}
-                    marks
-                    min={0}
-                    max={10}
-                    sx={{
-                      color: '#8C52FF',
-                      marginLeft: '50px',
-                      marginRight: '50px'
-                    }}
-                  />
-                  <span className='emojis' role='img' aria-label='dancer'>
-                    💃
-                  </span>
-                </Box>
 
-                <Box
-                  sx={{
-                    margin: '0 auto',
-                    width: '75%',
-                    marginTop: '50px',
-                    marginBottom: '30px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <span className='emojis' role='img' aria-label='sleep'>
-                    💤
-                  </span>
-                  <Slider
-                    onChange={e => setEnergy(e.target.value / 10)}
-                    aria-label='Temperature'
-                    defaultValue={0}
-                    step={1}
-                    marks
-                    min={0}
-                    max={10}
+          {trackList.length > 1 && (
+            <div className='container'>
+              <div>
+                <h1 className='page-title'>How are you feeling today?</h1>
+                <form onSubmit={e => findRecommendation(e)}>
+                  <Box
                     sx={{
-                      color: '#8C52FF',
-                      marginLeft: '50px',
-                      marginRight: '50px'
+                      margin: '0 auto',
+                      width: '75%',
+                      marginTop: '50px',
+                      marginBottom: '30px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}
-                  />
-                  <span className='emojis' role='img' aria-label='sports'>
-                    🏂
-                  </span>
-                </Box>
+                  >
+                    <span
+                      className='emojis'
+                      role='img'
+                      aria-label='sofa and lamp'
+                    >
+                      🛋️
+                    </span>
+                    <Slider
+                      onChange={e => setDance(e.target.value / 10)}
+                      aria-label='Temperature'
+                      defaultValue={0}
+                      step={1}
+                      marks
+                      min={0}
+                      max={10}
+                      sx={{
+                        color: '#8C52FF',
+                        marginLeft: '50px',
+                        marginRight: '50px'
+                      }}
+                    />
+                    <span className='emojis' role='img' aria-label='dancer'>
+                      💃
+                    </span>
+                  </Box>
 
-                <Box
-                  sx={{
-                    margin: '0 auto',
-                    width: '75%',
-                    marginTop: '50px',
-                    marginBottom: '20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <span className='emojis' role='img' aria-label='crying'>
-                    😭
-                  </span>
-                  <Slider
-                    onChange={e => setValence(e.target.value / 10)}
-                    aria-label='Temperature'
-                    defaultValue={0}
-                    step={1}
-                    marks
-                    min={0}
-                    max={10}
+                  <Box
                     sx={{
-                      color: '#8C52FF',
-                      marginLeft: '50px',
-                      marginRight: '50px'
+                      margin: '0 auto',
+                      width: '75%',
+                      marginTop: '50px',
+                      marginBottom: '30px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}
-                  />
-                  <span className='emojis' role='img' aria-label='happy'>
-                    😄
-                  </span>
-                </Box>
+                  >
+                    <span className='emojis' role='img' aria-label='sleep'>
+                      💤
+                    </span>
+                    <Slider
+                      onChange={e => setEnergy(e.target.value / 10)}
+                      aria-label='Temperature'
+                      defaultValue={0}
+                      step={1}
+                      marks
+                      min={0}
+                      max={10}
+                      sx={{
+                        color: '#8C52FF',
+                        marginLeft: '50px',
+                        marginRight: '50px'
+                      }}
+                    />
+                    <span className='emojis' role='img' aria-label='sports'>
+                      🏂
+                    </span>
+                  </Box>
 
-                <button type='submit' className='search-button'>
-                  Get Today's MoodTrack
-                </button>
-              </form>
+                  <Box
+                    sx={{
+                      margin: '0 auto',
+                      width: '75%',
+                      marginTop: '50px',
+                      marginBottom: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <span className='emojis' role='img' aria-label='crying'>
+                      😭
+                    </span>
+                    <Slider
+                      onChange={e => setValence(e.target.value / 10)}
+                      aria-label='Temperature'
+                      defaultValue={0}
+                      step={1}
+                      marks
+                      min={0}
+                      max={10}
+                      sx={{
+                        color: '#8C52FF',
+                        marginLeft: '50px',
+                        marginRight: '50px'
+                      }}
+                    />
+                    <span className='emojis' role='img' aria-label='happy'>
+                      😄
+                    </span>
+                  </Box>
+
+                  <button type='submit' className='search-button'>
+                    Get Today's MoodTrack
+                  </button>
+                </form>
+              </div>
             </div>
-          </div>}
-        </div>
-      ) : (
-        <div className='logo-container'>
-          <span className="loader"></span>
-
+          )}
         </div>
       )}
 
