@@ -10,7 +10,7 @@ export default function LandingPage ({ setToken }) {
   }, [])
 
   const CLIENT_ID = 'd6164693bccb4f4eab924abd717fdf37'
-  const REDIRECT_URI = 'http://localhost:3000/tracks'
+  const REDIRECT_URI = 'http://moodtrack.netlify.com/tracks'
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
   const RESPONSE_TYPE = 'token'
   const SCOPES =
