@@ -170,8 +170,8 @@ export default function FindTracks ({ token, setToken }) {
                     justifyContent: 'center'
                   }}
                 >
-                  <span className='emojis' role='img' aria-label='seat'>
-                    💺
+                  <span className='emojis' role='img' aria-label='sofa and lamp'>
+                    🛋️
                   </span>
                   <Slider
                     onChange={e => setDance(e.target.value / 10)}
