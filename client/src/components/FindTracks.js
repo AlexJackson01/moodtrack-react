@@ -103,16 +103,16 @@ export default function FindTracks ({ token, setToken }) {
     console.log(combined)
 
     setTrackList(combined)
-    setTimeout(() => setLoading(false, { trackList: combined }), 10)
+    setTimeout(() => setLoading(false, { trackList: combined }), 0)
 
   }
 
   useEffect(() => {
+    setLoading(true)
     getToken()
     if (token) {
       findTracks()
     }
-    setLoading(true);
   }, [token])
 
   const findRecommendation = e => {
