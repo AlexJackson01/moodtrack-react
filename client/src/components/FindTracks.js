@@ -141,6 +141,7 @@ export default function FindTracks ({ token, setToken }) {
     //     ...state, songRecommendation
     // }))
     setShowTrack(true)
+    setLoading(false)
   }
 
   return (
