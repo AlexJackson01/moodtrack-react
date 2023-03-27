@@ -16,7 +16,7 @@ export default function FindTracks ({ token, setToken }) {
   const [songRecommendation, setSongRecommendation] = useState([])
   const [randomSong, setRandomSong] = useState(0)
   const [latestSongs, setLatestSongs] = useState([])
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(null);
 
   const getToken = () => {
     let urlParams = new URLSearchParams(window.location.hash.replace('#', '?'))
@@ -103,6 +103,8 @@ export default function FindTracks ({ token, setToken }) {
     console.log(combined)
 
     setTrackList(combined)
+    setTimeout(() => setLoading(false, { trackList: combined }), 10)
+
   }
 
   useEffect(() => {
@@ -110,7 +112,7 @@ export default function FindTracks ({ token, setToken }) {
     if (token) {
       findTracks()
     }
-    // setLoading(true);
+    setLoading(true);
   }, [token])
 
   const findRecommendation = e => {
@@ -143,7 +145,7 @@ export default function FindTracks ({ token, setToken }) {
 
   return (
     <div>
-      {token && !showTrack && (
+      {token && !showTrack && !loading ? (
         <div className='logo-container'>
           <img
             className='moodtrack-logo-small'
@@ -155,7 +157,7 @@ export default function FindTracks ({ token, setToken }) {
               Logout
             </button>
           </p>
-          <div className='container'>
+          {trackList.length > 1 && <div className='container'>
             <div>
               <h1 className='page-title'>How are you feeling today?</h1>
               <form onSubmit={e => findRecommendation(e)}>
@@ -263,7 +265,12 @@ export default function FindTracks ({ token, setToken }) {
                 </button>
               </form>
             </div>
-          </div>
+          </div>}
+        </div>
+      ) : (
+        <div className='logo-container'>
+          <span className="loader"></span>
+
         </div>
       )}
 

@@ -51,6 +51,31 @@ h1 {
   margin-top: 40px;
 }
 
+.loading-title {
+  color: white;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-top: 50px;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+
 .moodtrack-logo-small {
   height: 150px;
   margin-bottom: -30px;
