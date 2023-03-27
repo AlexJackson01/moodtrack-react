@@ -197,8 +197,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '30px',
-                        marginRight: '30px'
+                        marginLeft: '15px',
+                        marginRight: '15px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='dancer'>
@@ -230,8 +230,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '30px',
-                        marginRight: '30px'
+                        marginLeft: '15px',
+                        marginRight: '15px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='sports'>
@@ -263,8 +263,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '30px',
-                        marginRight: '30px'
+                        marginLeft: '15px',
+                        marginRight: '15px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='happy'>
