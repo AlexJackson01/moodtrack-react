@@ -9,7 +9,15 @@ body {
 
 .container {
   background-color: #FFFCEF;
-  margin: 50px 100px;
+  text-align: center;
+  /* margin: 0 auto; */
+  width: 75%;
+  /* margin: 50px 100px; */
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   border: 2px solid #77838D;
   box-shadow: 1px 1px 0px #C7D0D8,
@@ -27,7 +35,7 @@ body {
 }
 
 .moodtrack-logo {
-  height: 300px;
+  height: 20vh;
 }
 
 .brain-icon {
@@ -45,10 +53,12 @@ body {
 h1 {
   font-family: 'Roboto Slab', serif;
   font-weight: 300;
+  font-size: 3vh;
 }
 
 .page-title {
   margin-top: 40px;
+  font-size: 3vh;
 }
 
 .loading-title {
@@ -86,11 +96,11 @@ h1 {
   background-color: #8C52FF;
   color: white;
   font-family: 'Roboto Slab', serif;
-  font-size: 20px;
+  font-size: 2vh;
   text-align: center; 
-  line-height: 65px;
+  line-height: 30px;
   padding: 10px;
-  width: 300px;
+  width: 20vh;
   border-radius: 20px;
   border: none;
   margin-bottom: 50px;
@@ -98,7 +108,7 @@ h1 {
 }
 
 span.emojis {
-  font-size: 50px;
+  font-size: 40px;
   /* margin-right: 20px; */
 }
 
@@ -136,4 +146,5 @@ h4 {
 .album-image {
   margin-top: 20px;
   margin-bottom: 20px;
+  height: 20vh;
 }

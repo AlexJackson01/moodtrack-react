@@ -172,7 +172,6 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
-                      width: '75%',
                       marginTop: '50px',
                       marginBottom: '30px',
                       display: 'flex',
@@ -197,8 +196,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '50px',
-                        marginRight: '50px'
+                        marginLeft: '30px',
+                        marginRight: '30px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='dancer'>
@@ -209,7 +208,6 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
-                      width: '75%',
                       marginTop: '50px',
                       marginBottom: '30px',
                       display: 'flex',
@@ -230,8 +228,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '50px',
-                        marginRight: '50px'
+                        marginLeft: '30px',
+                        marginRight: '30px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='sports'>
@@ -242,7 +240,6 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
-                      width: '75%',
                       marginTop: '50px',
                       marginBottom: '20px',
                       display: 'flex',
@@ -263,8 +260,8 @@ export default function FindTracks ({ token, setToken }) {
                       max={10}
                       sx={{
                         color: '#8C52FF',
-                        marginLeft: '50px',
-                        marginRight: '50px'
+                        marginLeft: '30px',
+                        marginRight: '30px'
                       }}
                     />
                     <span className='emojis' role='img' aria-label='happy'>
