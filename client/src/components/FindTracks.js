@@ -172,6 +172,7 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
+                      width: '90%',
                       marginTop: '50px',
                       marginBottom: '30px',
                       display: 'flex',
@@ -208,6 +209,7 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
+                      width: '90%',
                       marginTop: '50px',
                       marginBottom: '30px',
                       display: 'flex',
@@ -240,6 +242,7 @@ export default function FindTracks ({ token, setToken }) {
                   <Box
                     sx={{
                       margin: '0 auto',
+                      width: '90%',
                       marginTop: '50px',
                       marginBottom: '20px',
                       display: 'flex',
